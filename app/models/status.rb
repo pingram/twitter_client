@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Status < ActiveRecord::Base
   validates :twitter_status_id, :body, :twitter_user_id, presence: true
   validates :twitter_status_id, uniqueness: true
@@ -36,4 +38,21 @@ class Status < ActiveRecord::Base
     self.fetch_by_twitter_user_id!(twitter_user_id)
   end
 
+  def self.get_by_twitter_user_id(twitter_user_id)
+    if self.internet_connection?
+      self.fetch_by_twitter_user_id!(twitter_user_id)
+    end
+
+    self.where(twitter_user_id: twitter_user_id)
+  end
+
+
+  private
+  def self.internet_connection?
+    begin
+      true if open("http://www.google.com/")
+    rescue
+      false
+    end
+  end
 end

@@ -19,7 +19,7 @@ class TwitterSession
   CONSUMER = OAuth::Consumer.new(
     CONSUMER_KEY, CONSUMER_SECRET, :site => "https://twitter.com")
 
-  TOKEN_FILE = "./../access_token.yml"
+  TOKEN_FILE = Rails.root.join('access_token.yml')
 
 
   # Both `::get` and `::post` should return the parsed JSON body.
