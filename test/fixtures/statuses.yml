@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  twitter_status_id: 1
+  twitter_user_id: MyString
+
+two:
+  body: MyString
+  twitter_status_id: 1
+  twitter_user_id: MyString
